@@ -1,15 +1,18 @@
-head {
-    color: Blue
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    text-align: center;
+html {
+    background: grey;
+    background-image: url('http://i.imgur.com/N6oqDu8.jpg');
 }
 
-body {
-    color: Red
-    font-family: "Comic Sans MS", cursive, sans-serif;
+h2 {
     text-align: center;
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000;
 }
 
-.croc {
-    background-image: url('http://i.imgur.com/aXUbGlT.gif');
+p {
+    border: 1px dashed;
+    margin: 2px;
+    text-align: center;
+    padding: 10px;
 }
