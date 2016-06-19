@@ -1,18 +1,35 @@
-html {
-    background: grey;
-    background-image: url('http://i.imgur.com/N6oqDu8.jpg');
+h1, img {
+    display: inline-block;
 }
 
-h2 {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-    border: 1px solid #000;
+.crop img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    float: right;
 }
 
 p {
     border: 1px dashed;
     margin: 2px;
     text-align: center;
-    padding: 10px;
+    padding: 20px;
+}
+
+html, body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+strong {
+    padding: 30px;
+    text-align: center;
+}
+
+.babread: hover {
+    transform:scale(2,2);
+    transform-origin:0 0;
 }
