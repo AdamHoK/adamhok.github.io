@@ -1,11 +1,11 @@
 head {
     color: Blue
-    font-family: Comic, sans;
+    font-family: "Comic Sans MS", cursive, sans-serif
     text-align: center;
 }
 
 body {
     color: Red
-    font-family: Comic, sans;
+    font-family: "Comic Sans MS", cursive, sans-serif
     text-align: center;
 }
