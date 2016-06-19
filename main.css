@@ -1,3 +1,11 @@
+head {
+    color: Blue
+    font-family: Comic, sans;
+    text-align: center;
+}
+
 body {
-    color: #ffffff
+    color: Red
+    font-family: Comic, sans;
+    text-align: center;
 }
