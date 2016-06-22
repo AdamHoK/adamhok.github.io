@@ -37,12 +37,22 @@ strong {
         position:relative;
 }
 
-.texto{
-    margin-top:-10px;
-    padding: 20px;
-    float:right;
+.bbread {
+    margin-left: 350px;
+    margin-right: 350px;
+
 }
 
-.bbread {
-    float: center;
+.shrimpo {
+    float: right;
+    display: inline;
+    position: relative;
+    margin-top: 20px;
+
 }
+
+.shrimp {
+    margin-left: 350px;
+    margin-right: 350px;
+}
+
