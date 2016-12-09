@@ -1,5 +1,7 @@
 import random as r
 
+#ADAM-PC WAS HERE
+
 dealerCards=[r.randint(1,12) for i in range(2)]
 cards=[r.randint(1,12) for i in range(2)]
 faces=['Jack','King','Queen']
