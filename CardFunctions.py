@@ -17,19 +17,24 @@ def isBust(score):
 
 def printCards(cards):
     end=[]
+    global realCards
+    realCards=[]
     end.append("Your cards:")
     for card in cards:
         if card>10:
             end.append(faces[12-card])
+            realCards.append(10)
         elif card==1:
             end.append("Ace")
+            realCards.append(1)
         else:
             end.append(str(card))
-    end.append("Your score:"); end.append(str(sum(cards)))
+            realCards.append(card)
+    end.append("Your score:"); end.append(str(sum(realCards)))
     end="\n".join(end)
     out.configure(text=end)
     out.pack()
-    if isBust(sum(cards))==True:
+    if isBust(sum(realCards))==True:
         bust=tk.Label(text="Bust!")
         bust.pack()
         return True

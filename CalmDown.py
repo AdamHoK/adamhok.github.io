@@ -6,9 +6,10 @@ output=tk.Label(text="Output Here'")
 dealerCards=[r.randint(1,12) for i in range(2)]
 cards=[r.randint(1,12) for i in range(2)]
 faces=['Jack','King','Queen']
+
 window=tk.Tk()
 
-pc=tk.Button(text="Your",command=lambda: printCards(cards))
+pc=tk.Button(text="Your Cards",command=lambda: printCards(cards))
 hitt=tk.Button(text="Hit", command=lambda: hit(cards))
 stick=tk.Button(text="Stick",command=lambda: isWin(sum(cards),sum(dealerCards)))
 
@@ -19,8 +20,8 @@ else:
     hit(dealerCards)
     output.configure(text="Dealer Hits")
 
-pc.pack()
-hitt.pack()
-stick.pack()
+pc.pack(side=tk.LEFT)
+hitt.pack(side=tk.LEFT)
+stick.pack(side=tk.RIGHT)
 
 window.mainloop()
