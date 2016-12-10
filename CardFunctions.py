@@ -1,8 +1,11 @@
 import random as r
 import tkinter as tk
 
-dealerCards=[r.randint(1,12) for i in range(2)]
-cards=[r.randint(1,12) for i in range(2)]
+dealerCards=[r.randint(1,13) for i in range(2)]+[[]]
+
+cards=[r.randint(1,13) for i in range(2)]+[[]]
+
+
 faces=['Jack','King','Queen']
 out=tk.Label(text="?")
 end=tk.Label(text="?")
@@ -17,33 +20,33 @@ def isBust(score):
 
 def printCards(cards):
     end=[]
-    global realCards
-    realCards=[]
+    
+    
     end.append("Your cards:")
-    for card in cards:
+    for card in cards[0:len(cards)-1]:
         if card>10:
-            end.append(faces[12-card])
-            realCards.append(10)
+            cards[len(cards)-1].append(10)
+            end.append(faces[13-card])
         elif card==1:
             end.append("Ace")
-            realCards.append(1)
+            cards[len(cards)-1].append(1)
         else:
             end.append(str(card))
-            realCards.append(card)
-    end.append("Your score:"); end.append(str(sum(realCards)))
+            cards[len(cards)-1].append(card)
+    end.append("Your score:"); end.append(str(sum(cards[len(cards)-1])))
     end="\n".join(end)
     out.configure(text=end)
     out.pack()
-    if isBust(sum(realCards))==True:
+    if isBust(sum(cards[len(cards)-1]))==True:
         bust=tk.Label(text="Bust!")
         bust.pack()
         return True
 
 def hit(cards):
-    if len(cards)<4:
-        cards.append(r.randint(1,12))
+    if len(cards)<5:
+        cards.insert(len(cards)-1,r.randint(1,13))
     else:
-        cards[len(cards)-1]=r.randint(1,12)
+        cards[len(cards)-1]=r.randint(1,13)
     printCards(cards)
 
 def isWin(score,score2):
