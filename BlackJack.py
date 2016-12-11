@@ -2,10 +2,33 @@ import random as r
 
 #ADAM-PC WAS HERE
 
-dealerCards=[r.randint(1,12) for i in range(2)]
-cards=[r.randint(1,12) for i in range(2)]
-faces=['Jack','King','Queen']
+#From here
+def rec(card):
+    if deck[card]>0:
+        return card
+    else:
+        return r.randint(1,12)
 
+def decking(cards):
+    for card in cards:
+        if all(x==0 for x in deck.values())==True:
+            print("Sorry")
+            break
+        elif deck[card]==0:
+            rec(card)
+        deck[card]-=1
+
+deck={i:4 for i in range(1,13)}
+faces=['Jack','Queen','King']
+#To here
+#Is for the deck
+    
+dealerCards=[r.randint(1,12) for i in range(2)]
+cards=[4,4,4,4]#[r.randint(1,12) for i in range(2)]
+decking(cards); decking(dealerCards)
+
+faces=['Jack','King','Queen']
+    
 def printCards(cards):
     print("\nYour cards:")
     for card in cards:
@@ -25,8 +48,6 @@ def isBust(score):
         return False
 
 def isWin(score,score2):
-    #print("\nYour score:\n",score,
-    #      "\nDealer's score:\n",score2)
     end=""
     if score==21:
         end="\nBlackjack! You won"
@@ -48,11 +69,12 @@ def isWin(score,score2):
     return end
     
 
-def hit(cards):
+def hit(cardss):
     if len(cards)<4:
-        cards.append(r.randint(1,12))
+        cardss.append(r.randint(1,12))
     else:
-        cards[len(cards)-1]=r.randint(1,12)
+        cardss[len(cardss)-1]=r.randint(1,12)
+    decking(cardss)
 
 def line():
     print("\n","-"*30,"\n")
@@ -62,25 +84,19 @@ while True:
     decision=int(input("\n1. Hit\n2. Stick\n> "))
     if decision==1:
         hit(cards)
-        #print("\nYour score:\n", #HERE
-        #      sum(cards),
-        #      "\nDealer's score:\n" #HERE
-        #      ,sum(dealerCards))
-        
         if isBust(sum(cards))==True:
-            print("\nYou bust")
+            print("\nYou bust", end="\r"); print(" with",sum(cards))
             break
         else:
-            printCards(cards) #HERE
+            printCards(cards)
     elif decision==2:
-        print(isWin(sum(cards), sum(dealerCards))) #HERE
+        print(isWin(sum(cards), sum(dealerCards))) 
         break
         
     if sum(dealerCards)>=17:
         print("\nDealer Sticks")
-        print(isWin(sum(cards),sum(dealerCards))) #HERE
+        print(isWin(sum(cards),sum(dealerCards))) 
         break
     else:
         hit(dealerCards)
-        print("\nDealer Hits")#HERE
-
+        print("\nDealer Hits")
