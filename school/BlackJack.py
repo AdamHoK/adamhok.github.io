@@ -13,7 +13,7 @@ def summ(cards):
     return sum(summer)
 
 #From here
-def rec(card):
+def rec(card): #Recursive function to find a card which is in the deck
     if deck[card]>0:
         return card
     else:
@@ -48,7 +48,7 @@ decking(cards); decking(dealerCards)
 faces=['Jack','King','Queen']
     
 def printCards(cards):
-    print("\nYour cards:")
+    print("Your cards:")
     for card in cards:
         if card>10:
             print(faces[12-card],end=" ")
@@ -58,7 +58,7 @@ def printCards(cards):
             print(card, end=" ")
             
     print("\nYour score:",summ(cards))
-    print()
+    line()
 
 def isBust(score):
     if score>21:
@@ -76,7 +76,7 @@ def isWin(score,score2):
         return end, score2
     if score<21 and score2<21:
         if score>score2:
-            return "\nYou won", score
+            return "You won", score
         elif score2>score:
             return "\nDealer won", score2 
 
@@ -96,27 +96,42 @@ def hit(cardss):
     decking(cardss)
 
 def line():
-    print("\n","-"*30,"\n")
+    print("-"*30)
     
 printCards(cards)
 
 while True:
-    decision=int(input("\n1. Hit\n2. Stick\n> "))
+    decision=int(input("1. Hit\n2. Stick\n> "))
+    line()
     if decision==1:
         hit(cards)
         if isBust(summ(cards))==True:
-            print("\nYou bust", end="\r"); print(" with",summ(cards))
+            print("You bust", end=""); print(" with",summ(cards))
+            line()
             break
         else:
             printCards(cards)
+        #line()
     elif decision==2:
         print(isWin(summ(cards), summ(dealerCards))[0],"with",isWin(summ(cards),summ(dealerCards))[1]) 
+        line()
         break
         
     if sum(dealerCards)>=17:
-        print("\nDealer Sticks")
+        print("Dealer Sticks")
         print(isWin(summ(cards),summ(dealerCards))[0],"with",isWin(summ(cards),summ(dealerCards))[1]) 
+        line()
         break
     else:
         hit(dealerCards)
-        print("\nDealer Hits")
+        print("Dealer Hits")
+
+print("Dealer's card were:")
+for card in dealerCards:
+    if card>10:
+        print(faces[12-card],end=" ")
+    elif card==1:
+        print("Ace",end=" ")
+    else:
+        print(card, end=" ")
+print("\nDealer had a score of:",summ(dealerCards))
