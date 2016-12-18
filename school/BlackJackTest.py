@@ -17,43 +17,23 @@ def reverse(data):
     for index in range(len(data)-1,-1,-1):
         yield data[index]
 '''
-def rec(card): #Recursive function to find a card which is in the deck
+
+def rec(card):
     if deck[card]>0:
         return card
     else:
-        return r.randint(1,13)
+        return rec(r.randint(1,10))
 
-def decking(cards):
-    for card in cards:
-        #print(card)
-        if all(x==0 for x in deck.values())==True:
-            print("Deck is empty")
-            quit()
-            break
-        elif deck[card]==0:
-            rec(card)
-        if card>10:
-            deck[card][2]-=1
-        else:
-            deck[card]-=1
+deck={i:4 for i in range(1,11)}
 
-def hit(cardss):
-    if len(cards)<4:
-        cardss.append(r.randint(1,13))
-    else:
-        cardss[len(cardss)-1]=r.randint(1,13)
-        
-    decking(cardss)
-
-deck={i:4 for i in range(1,13)}
-faces=['Jack','Queen','King']
-for i in range(11,14):
-    deck[i]=[faces[i-11],10,4]
-    
+j=0
 while True:
-    hit(cards)
+    j+=1; x=r.randint(1,10)
     input("> ")
-    if all(x<0 for x in deck.values())==True:
+    print(x); y=rec(x)
+    deck[y]-=1
+    print(y);print(deck)
+    if all(z<1 for z in deck.values())==True:
+        print("Yes",j)
         break
-    print(cards)
-    print(deck)
+    

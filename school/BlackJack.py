@@ -40,7 +40,7 @@ def rec(card): #Recursive function to find a card which is in the deck
     if deck[card]>0:
         return card
     else:
-        return r.randint(1,12)
+        return rec(r.randint(1,12))
 
 def decking(cards):
     for card in cards:
@@ -119,6 +119,7 @@ while True:
         hit(cards)
         if isBust(summ(cards))==True:
             print("You bust", end=""); print(" with",summ(cards)); line()
+            printCards(cards); line()
             break
         else:
             printCards(cards)
